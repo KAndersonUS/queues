@@ -1,5 +1,5 @@
 {
-  "name": "queues-demo",
+  "name": "queues-demo-worker",
   "version": "0.0.0",
   "description": "Demo code for queueing with node",
   "private": true,
