@@ -7,13 +7,9 @@ services:
       - 6379
   worker:
     build: ./worker
-    container_name: worker
-    command: node index.js
     depends_on:
       - redis
   master:
     build: ./master
-    container_name: master
-    command: node index.js
     depends_on:
       - redis

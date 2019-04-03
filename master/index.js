@@ -2,8 +2,6 @@ const Queue = require('bull');
 
 main();
 
-console.log('HERE');
-
 function main () {
     console.log('main started');
     const queue = new Queue('jobs', 'redis://redis');
