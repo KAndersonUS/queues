@@ -11,7 +11,13 @@ function main () {
 
 async function process(job) {
     console.log(`Processing job ${job.id}`);
-    const result = await expensiveFunction();
+    let result;
+    try {
+        result = await expensiveFunction();
+    } catch (err) {
+        console.error(`Job ${job.id} failed with error: ${err.message}`);
+        throw err;
+    }
     console.log(`Done processing job ${job.id}`);
     return result;
 }
