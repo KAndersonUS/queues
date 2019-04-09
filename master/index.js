@@ -6,12 +6,12 @@ function main () {
     console.log('main started');
     const queue = new Queue('jobs', 'redis://redis');
     const jobOpts = {
-        attempts: 3,
+        attempts: 10,
         removeOnComplete: true,
         removeOnFail: true,
     };
 
-    queue.on('completed', (job) => {
+    queue.on('complete', (job) => {
         console.log(`Job ${job.jobId} completed successfully`);
     });
 
