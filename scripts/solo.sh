@@ -1,0 +1,1 @@
+docker build -t solo ./solo && docker run -t solo
