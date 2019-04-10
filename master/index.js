@@ -4,19 +4,19 @@ main();
 
 function main () {
     console.log('main started');
-    const queue = new Queue('jobs', 'redis://redis');
+    const queue = new Queue('work', 'redis://redis');
     const jobOpts = {
         attempts: 10,
         removeOnComplete: true,
         removeOnFail: true,
     };
 
-    queue.on('complete', (job) => {
-        console.log(`Job ${job.jobId} completed successfully`);
+    queue.on('global:completed', (jobID, result) => {
+        console.log(`Job ${jobID} completed. Result: ${JSON.stringify(result)}`);
     });
 
-    queue.on('failed', (job, err) => {
-        console.error(err, `Job ${job.jobId} threw an error`);
+    queue.on('global:error', (jobID, err) => {
+        console.error(err, `Job ${jobID} threw an error`);
     });
 
     for (let i=0; i<30; i++) {
