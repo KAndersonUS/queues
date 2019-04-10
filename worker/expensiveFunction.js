@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function expensive () {
-    const delayMilliseconds = Math.random() * 1000;
+    const delayMilliseconds = (Math.random() * 1000) + 50;
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             // 1:10 chance of error
